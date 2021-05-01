@@ -95,7 +95,7 @@ const Login = () => {
     <div className="model">
       <div className="model__left">
         <div className="model__img">
-          <a href={LINK_CHATWORK} target="_blank" rel='noreferrer'>
+          <a href={LINK_CHATWORK} target="_blank">
             <img
               src={LINK_AVATAR}
               alt="img"

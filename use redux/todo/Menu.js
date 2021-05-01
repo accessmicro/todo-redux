@@ -20,7 +20,8 @@ const Menu = ({ count, isClearCompleted }) => {
   };
   useEffect(() => {
     setUsername(history.location.state.username);
-  });
+    dispatch({ type: filterAction.ALL, payload: null });
+  }, []);
   const handleAll = (event) => {
     event.preventDefault();
     setFilterActive(0);

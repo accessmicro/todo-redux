@@ -9,13 +9,13 @@ import { getFilter, getSearch } from "../reducers/selector/selectorFilter";
 import { callAPI, onHandleChooseAllAction } from "./../actions/todo";
 import { onHandleSearchAction } from "./../actions/search";
 const Todo = () => {
+  const [isLoading, setiIsLoading] = useState(false);
   const TITLE = "todos";
   const history = useHistory();
   const [count, setCount] = useState(0);
   const [isSearch, setIsSearch] = useState(false);
   const [valueSearch, setValueSearch] = useState("");
   const todos = useSelector((state) => state.todo, shallowEqual);
-  const isLoading = useSelector((state) => state.load, shallowEqual);
   const filterItems = useSelector(getFilter, shallowEqual);
   const searchItems = useSelector(getSearch, shallowEqual);
   const dispatch = useDispatch();
@@ -56,6 +56,8 @@ const Todo = () => {
     setIsSearch((pre) => !pre);
   };
 
+
+
   return (
     <section className="todo__screen">
       <div className="todo__info">
@@ -88,19 +90,9 @@ const Todo = () => {
           <Menu count={count} isClearCompleted={todos.length > count} />
         )}
       </div>
-      
-      {isLoading ? (
-        <div className="todo__loading">
-          <div id="loader-wrapper">
-            <div id="loader"></div>
-
-            <div className="loader-section section-left"></div>
-            <div className="loader-section section-right"></div>
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
+     { (!isLoading) ? (<div className="todo__loading">
+        <div class="circle-loading"></div>
+      </div>):<></> }
     </section>
   );
 };
